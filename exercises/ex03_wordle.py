@@ -43,18 +43,17 @@ def emojified(guess: str, word: str) -> str:
 
 def main(secret: str) -> None:
     """The entrypoint of the program and main game loop."""
-    turn = 1
-    while turn <= 7:
-        if turn == 7:
-            print("X/6 - Sorry, try again tomorrow!")
-            exit()  # exit so that it doesnt go on to print the next statement
+    turn = 0
+    guess = ""
+    while turn < 6 and guess != secret:
+        turn += 1
         print(f"=== Turn {turn}/6 ===")
         guess = input_guess(len(secret))
         print(emojified(guess, secret))
-        if guess == secret:
-            print(f"You won in {turn}/6 turns!")
-            exit()  # exit so it doesnt continue the loop
-        turn += 1
+    if guess == secret:
+        print(f"You won in {turn}/6 turns!")
+    else:
+        print("X/6 - Sorry, try again tomorrow!")
 
 
 if __name__ == "__main__":
