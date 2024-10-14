@@ -4,6 +4,8 @@ __author__ = "730731576"
 
 
 def all(list: list[int], val: int) -> bool:
+    if len(list) == 0:
+        return False
     for x in list:
         if x != val:
             return False
@@ -13,7 +15,7 @@ def all(list: list[int], val: int) -> bool:
 def max(list: list[int]) -> int:
     if len(list) == 0:
         raise ValueError("max() arg is an empty List")
-    max: int = 0
+    max: int = list[0]  # set max to first index incase of negatives
     for x in list:
         if x > max:
             max = x
@@ -21,6 +23,8 @@ def max(list: list[int]) -> int:
 
 
 def is_equal(list1: list[int], list2: list[int]) -> bool:
+    if len(list1) != len(list2):
+        return False
     for x in range(
         0, len(list1)
     ):  # used range so x can be used for indexing both lists
